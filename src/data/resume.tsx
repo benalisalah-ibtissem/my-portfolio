@@ -111,7 +111,7 @@ export const DATA = {
     {
       school: "Higher Institute of Computer Science and Mathematics of Monastir",
       href: "https://isimm.rnu.tn",
-      degree: "Bachelor's Degree of Computer Science (BCS)",
+      degree: "Bachelor&apos;s Degree of Computer Science (BCS)",
       logoUrl: "/isimm.png",
       start: "2021",
       end: "2024",

@@ -34,7 +34,7 @@ export default async function BlogPage() {
             </span>
           </div>
           <p className="text-muted-foreground text-sm mt-2">
-            Articles techniques, retours d'expérience et bonnes pratiques pour des projets professionnels.
+            Articles techniques, retours d&apos;expérience et bonnes pratiques pour des projets professionnels.
           </p>
         </div>
       </BlurFade>
