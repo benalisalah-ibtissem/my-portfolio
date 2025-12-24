@@ -142,3 +142,46 @@ code[data-line-numbers-max-digits="2"] > [data-line]::before {
 code[data-line-numbers-max-digits="3"] > [data-line]::before {
   width: 3rem;
 }
+
+/* ------------------------------- */
+/* Design utilities & background   */
+/* ------------------------------- */
+
+@layer utilities {
+  /* Soft aurora gradient backdrop */
+  .bg-aurora {
+    background-image:
+      radial-gradient(1200px 600px at 0% -10%, rgba(99,102,241,0.15) 0%, transparent 60%),
+      radial-gradient(800px 400px at 100% 0%, rgba(20,184,166,0.18) 0%, transparent 60%),
+      radial-gradient(1000px 500px at 50% 120%, rgba(236,72,153,0.12) 0%, transparent 60%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  /* Glassmorphism surface helper */
+  .glass {
+    @apply backdrop-blur-md border;
+    background-color: color-mix(in oklab, white 60%, transparent);
+  }
+  .dark .glass {
+    background-color: color-mix(in oklab, black 60%, transparent);
+  }
+
+  /* Card hover polish */
+  .card-hover {
+    @apply transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl hover:border-primary/20;
+  }
+}
+
+/* Prose tweaks for blog readability */
+@layer components {
+  .prose {
+    @apply leading-relaxed;
+  }
+  .prose h2 {
+    @apply text-xl md:text-2xl font-semibold tracking-tight;
+  }
+  .prose p {
+    @apply text-sm md:text-base;
+  }
+}

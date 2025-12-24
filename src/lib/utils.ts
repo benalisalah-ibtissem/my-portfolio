@@ -5,8 +5,11 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function formatDate(date: string) {
+export function formatDate(date?: string) {
   let currentDate = new Date().getTime();
+  if (!date) {
+    return "";
+  }
   if (!date.includes("T")) {
     date = `${date}T00:00:00`;
   }

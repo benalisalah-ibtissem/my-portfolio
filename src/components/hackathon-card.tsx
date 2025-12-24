@@ -25,17 +25,17 @@ export function HackathonCard({
 }: Props) {
   return (
     <li className="relative ml-10 py-4">
-      <div className="absolute -left-16 top-2 flex items-center justify-center bg-white rounded-full">
-        <Avatar className="border size-12 m-auto">
+      <div className="absolute -left-16 top-2 flex items-center justify-center rounded-full">
+        <Avatar className="border size-12 m-auto bg-background/60">
           <AvatarImage src={image} alt={title} className="object-contain" />
           <AvatarFallback>{title[0]}</AvatarFallback>
         </Avatar>
       </div>
-      <div className="flex flex-1 flex-col justify-start gap-1">
+      <div className="flex flex-1 flex-col justify-start gap-1 rounded-xl bg-card/60 supports-[backdrop-filter]:backdrop-blur-md px-3 py-2 border card-hover">
         {dates && (
           <time className="text-xs text-muted-foreground">{dates}</time>
         )}
-        <h2 className="font-semibold leading-none">{title}</h2>
+        <h2 className="font-semibold leading-none tracking-tight">{title}</h2>
         {location && (
           <p className="text-sm text-muted-foreground">{location}</p>
         )}

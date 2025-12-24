@@ -5,6 +5,7 @@ import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const fontSans = FontSans({
@@ -57,16 +58,39 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6",
+          // Base layout with gradient background and refined spacing
+          "min-h-screen bg-background bg-aurora font-sans antialiased px-6",
           fontSans.variable
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="light">
           <TooltipProvider delayDuration={0}>
-            {children}
+            <main className="mx-auto max-w-3xl py-12 sm:py-20">
+              {children}
+            </main>
             <Navbar />
           </TooltipProvider>
         </ThemeProvider>
+        <Script id="sw-unregister" strategy="afterInteractive">
+          {`
+            try {
+              if (typeof window !== 'undefined' && window.location && window.location.hostname === 'localhost') {
+                if ('serviceWorker' in navigator) {
+                  navigator.serviceWorker.getRegistrations().then((regs) => {
+                    for (const reg of regs) reg.unregister();
+                  });
+                }
+                if (typeof caches !== 'undefined' && caches.keys) {
+                  caches.keys().then((keys) => {
+                    for (const key of keys) caches.delete(key);
+                  });
+                }
+              }
+            } catch (e) {
+              // ignore
+            }
+          `}
+        </Script>
       </body>
     </html>
   );

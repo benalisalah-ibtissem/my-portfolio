@@ -13,6 +13,7 @@ type Metadata = {
   publishedAt: string;
   summary: string;
   image?: string;
+  draft?: boolean;
 };
 
 function getMDXFiles(dir: string) {
@@ -66,5 +67,6 @@ async function getAllPosts(dir: string) {
 }
 
 export async function getBlogPosts() {
-  return getAllPosts(path.join(process.cwd(), "content"));
+  const all = await getAllPosts(path.join(process.cwd(), "content"));
+  return all.filter((p) => !p.metadata.draft);
 }
